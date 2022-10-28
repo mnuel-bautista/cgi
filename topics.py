@@ -26,14 +26,14 @@ if metodo == 'GET':
     cursor = conexion.cursor()
     cursor.execute(query)
     for (id, topic, user_id, created_at, updated_at) in cursor:
-        print("id:%s, topic:%s" % (id, topic))
+        print("<h1>id:%s</h1>, <h1>topic:%s</h1>" % (id, topic))
     cursor.close()
     conexion.close()
 elif metodo == 'POST':
     print("Metodo de agregar")
     print()
     topic = valoresUrl["topic"].value
-    query = ("INSERT INTO topics(topic) VALUES('{}')".format(topic))
+    query = ("INSERT INTO topics(title, user_id) VALUES('{}', 1)".format(topic))
     conexion = mysql.connector.connect(
         user='root', password='', host='localhost', database='foro')
     cursor = conexion.cursor()
